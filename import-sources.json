@@ -1,0 +1,44 @@
+[
+  {
+    "folder": "git-practice",
+    "repository": "https://github.com/dadaroo247-web/git-practice",
+    "branch": "main",
+    "commit": "b3d73f938224c48447ccdabf65bc930c90c3a584",
+    "files": 3
+  },
+  {
+    "folder": "html-css-portfolio",
+    "repository": "https://github.com/dadaroo247-web/html-css-portfolio",
+    "branch": "main",
+    "commit": "46af050febe4a2367a28be9a2d9abb65fb0d738b",
+    "files": 5
+  },
+  {
+    "folder": "javascript-assignment",
+    "repository": "https://github.com/dadaroo247-web/javascript-assignment",
+    "branch": "main",
+    "commit": "b40a17cef47bf67d8f8e758c73b4c831815d154b",
+    "files": 7
+  },
+  {
+    "folder": "JavaScript-final",
+    "repository": "https://github.com/dadaroo247-web/JavaScript-final",
+    "branch": "main",
+    "commit": "ac56b877113e4f5fb3f1c886d1fe7bc9a7942f41",
+    "files": 8
+  },
+  {
+    "folder": "movie-app-deploy-practice",
+    "repository": "https://github.com/dadaroo247-web/movie-app-deploy-practice",
+    "branch": "main",
+    "commit": "ac72123422dbd9b099f10a94dc7f27c3907e5669",
+    "files": 15
+  },
+  {
+    "folder": "my-first-page",
+    "repository": "https://github.com/dadaroo247-web/my-first-page",
+    "branch": "main",
+    "commit": "15e611d196be6bdf5d1ad2f0e319d36d441b4e56",
+    "files": 31
+  }
+]

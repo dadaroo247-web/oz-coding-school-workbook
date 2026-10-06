@@ -8,6 +8,21 @@ OZ 코딩스쿨에서 배운 내용을 복습하고 일별 과제를 정리하�
 | --- | --- | --- |
 | Day 40 | [Zustand 카운터](./day40-zustand) | Store 생성, 상태 변경, selector 사용 |
 
+## 기존 공개 저장소 과제
+
+각 저장소의 `main` 브랜치 파일을 폴더별로 모았습니다. 원본 저장소와 커밋 기록은 그대로 유지됩니다. 이 폴더들은 가져온 시점의 사본이며 자동 동기화되지 않습니다. 원본 커밋은 [가져오기 기록](./import-sources.json)에서 확인할 수 있습니다.
+
+| 과제 폴더 | 원본 저장소 |
+| --- | --- |
+| [git-practice](./git-practice) | [원본](https://github.com/dadaroo247-web/git-practice) |
+| [html-css-portfolio](./html-css-portfolio) | [원본](https://github.com/dadaroo247-web/html-css-portfolio) |
+| [javascript-assignment](./javascript-assignment) | [원본](https://github.com/dadaroo247-web/javascript-assignment) |
+| [JavaScript-final](./JavaScript-final) | [원본](https://github.com/dadaroo247-web/JavaScript-final) |
+| [movie-app-deploy-practice](./movie-app-deploy-practice) | [원본](https://github.com/dadaroo247-web/movie-app-deploy-practice) |
+| [my-first-page](./my-first-page) | [원본](https://github.com/dadaroo247-web/my-first-page) |
+
+각 프로젝트는 해당 폴더를 기준으로 실행합니다. 기존 배포 주소는 원본 저장소에서 계속 관리합니다.
+
 ## Day 40 실행
 
 ```bash

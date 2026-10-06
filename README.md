@@ -10,7 +10,7 @@ OZ 코딩스쿨에서 배운 내용을 복습하고 일별 과제를 정리하�
 
 ## 기존 공개 저장소 과제
 
-각 저장소의 `main` 브랜치 파일을 폴더별로 모았습니다. 원본 저장소와 커밋 기록은 그대로 유지됩니다. 이 폴더들은 가져온 시점의 사본이며 자동 동기화되지 않습니다. 원본 커밋은 [가져오기 기록](./import-sources.json)에서 확인할 수 있습니다.
+각 저장소의 `main` 브랜치 파일을 폴더별로 모았습니다. 원본 Git 기록과 추가 브랜치는 [백업 폴더](./_archive)에 보관했습니다. 이 폴더들은 가져온 시점의 사본이며 자동 동기화되지 않습니다. 원본 커밋은 [가져오기 기록](./import-sources.json)에서 확인할 수 있습니다.
 
 | 과제 폴더 | 원본 저장소 |
 | --- | --- |
@@ -21,7 +21,7 @@ OZ 코딩스쿨에서 배운 내용을 복습하고 일별 과제를 정리하�
 | [movie-app-deploy-practice](./movie-app-deploy-practice) | [원본](https://github.com/dadaroo247-web/movie-app-deploy-practice) |
 | [my-first-page](./my-first-page) | [원본](https://github.com/dadaroo247-web/my-first-page) |
 
-각 프로젝트는 해당 폴더를 기준으로 실행합니다. 기존 배포 주소는 원본 저장소에서 계속 관리합니다.
+각 프로젝트는 해당 폴더를 기준으로 실행합니다. 원본 저장소를 삭제하면 기존 GitHub Pages 주소는 더 이상 제공되지 않을 수 있습니다.
 
 ## Day 40 실행
 

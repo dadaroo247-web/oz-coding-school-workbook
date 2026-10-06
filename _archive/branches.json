@@ -1,0 +1,26 @@
+[
+  {
+    "repository": "javascript-assignment",
+    "branch": "day04",
+    "path": "_archive/branches/javascript-assignment/day04",
+    "commit": "a7e53c77ab9be84027a8e92541be88a82238a566"
+  },
+  {
+    "repository": "javascript-assignment",
+    "branch": "day06",
+    "path": "_archive/branches/javascript-assignment/day06",
+    "commit": "03cb0962ab3996d30652781f441a1ab84367f2bb"
+  },
+  {
+    "repository": "javascript-assignment",
+    "branch": "movie-method-assignment",
+    "path": "_archive/branches/javascript-assignment/movie-method-assignment",
+    "commit": "f821600fc4702749577295d7dd36052b194f32a4"
+  },
+  {
+    "repository": "my-first-page",
+    "branch": "feature/first-page",
+    "path": "_archive/branches/my-first-page/feature/first-page",
+    "commit": "49d867a4a43e5aec03e308e8a234894f9209770d"
+  }
+]

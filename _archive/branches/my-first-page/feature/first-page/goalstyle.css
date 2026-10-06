@@ -1,0 +1,55 @@
+.body {
+
+  text-align: center;
+  
+
+}
+
+.footer {
+  font-size: x-small;
+}
+
+.header {
+  height: 120px;
+  border: 1px;
+background-color: aliceblue;
+  border-style: groove;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  color: rgb(37, 128, 255);
+
+}
+
+  section { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 50px;}
+
+    .section-line {
+      width: 80px;
+      border: 0;
+      border-top: 1px solid #dddddd;
+      margin: 50px auto;
+    }
+
+    .table th {
+      background-color: aliceblue;
+    padding: 10px;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    .table-scroll {
+      width: 100%;
+      overflow-x: auto;
+    }
+

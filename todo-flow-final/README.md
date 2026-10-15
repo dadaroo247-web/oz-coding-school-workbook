@@ -2,7 +2,7 @@
 
 Next.js App Router, TypeScript, Firebase Firestore, Redux Toolkit으로 구현한 프론트엔드 최종 과제입니다. 할 일은 Firestore에 저장하고, 화면의 테마와 목록 필터는 Redux 및 redux-persist로 관리합니다.
 
-필수 기능과 선택 과제인 삭제, 다크모드, `useSettings`를 구현했습니다. **실제 무료 Spark 프로젝트·웹 앱·서울 Firestore 생성과 로컬 설정 연결을 완료했습니다. 현재 접근 규칙 게시 확인을 기다리고 있으며, 실제 CRUD·실시간 동기화 검증은 그다음 단계입니다.** `.env.local.example`은 빈 템플릿으로 유지했습니다. [Firebase 연결 현황](./FIREBASE_STATUS.md)을 참고하세요.
+필수 과제 **1~7**과 선택 과제 **삭제·다크모드·useSettings**를 모두 구현했습니다. **실제 무료 Spark 프로젝트·웹 앱·서울 Firestore를 연결하고, 승인된 접근 규칙 게시와 실제 CRUD·두 창 간 실시간 동기화 검증까지 완료했습니다.** `.env.local.example`은 빈 템플릿으로 유지했으며, 실제 설정값은 Git에서 제외된 로컬 `.env.local`에 저장했습니다. [Firebase 연결 결과](./FIREBASE_STATUS.md)를 참고하세요.
 
 ## 실행하기
 
@@ -27,7 +27,7 @@ npm run dev
 
 설정값이 없는 상태에서도 화면과 테마 전환을 확인할 수 있습니다. 이때 Firebase 설정 안내를 표시하고 할 일 쓰기를 막습니다. 로컬 가상 데이터로 저장 성공을 대신하지 않으므로, 실제 목록을 사용하려면 Firebase 연결이 필요합니다.
 
-## Firebase 설정 — 사용자가 완료할 과제 2
+## Firebase 설정 — 새로 복제한 환경에서 연결하기
 
 1. [Firebase Console](https://console.firebase.google.com/)에서 프로젝트를 생성하거나 수업용 프로젝트를 선택합니다.
 2. **프로젝트 설정 → 내 앱 → 웹 앱 추가**에서 앱을 등록하고 SDK 설정 및 구성의 값을 확인합니다.
@@ -78,7 +78,7 @@ NEXT_PUBLIC_FIREBASE_APP_ID=
 | 구분 | 구현 내용 | 주요 파일 |
 | --- | --- | --- |
 | 과제 1 | `Todo`, `'all' \| '진행 중' \| '완료'`, `'light' \| 'dark'` 타입 | `src/types/todo.ts` |
-| 과제 2 | 환경변수 기반 초기화 및 설정 누락 안내. 실제 설정·연결 검증은 사용자 작업 | `src/lib/firebase.ts`, `.env.local.example` |
+| 과제 2 | 실제 무료 Spark 프로젝트 연결·검증, 환경변수 기반 초기화 및 설정 누락 안내 | `src/lib/firebase.ts`, `.env.local.example` |
 | 과제 3 | 테마 토글 및 필터 변경 reducer | `src/store/todoSlice.ts` |
 | 과제 4 | `onSnapshot` 실시간 구독, 최신순 정렬, 구독 오류 처리와 해제 | `src/components/todo/TodoList.tsx` |
 | 과제 5 | `addDoc`과 `serverTimestamp`로 추가, 빈 입력 방지 | `src/components/todo/TodoInput.tsx` |
@@ -106,7 +106,7 @@ npm run build
 
 프로덕션 빌드를 실행하려면 빌드 완료 후 `npm run start`를 사용합니다. `NEXT_PUBLIC_` 환경변수는 빌드 시 포함되므로, 배포 환경의 값은 빌드 전에 등록하고 값을 바꾸면 다시 빌드하세요. lint/build 성공은 실제 Firebase 서비스와의 통신 검증을 대신하지 않습니다.
 
-## 제출 전 수동 확인
+## 복제·재설정 후 재확인 목록
 
 실제 Firebase 프로젝트를 연결한 뒤 다음을 확인합니다.
 
@@ -127,7 +127,7 @@ npm run build
 
 ## 실행 화면
 
-아래는 실제 Firebase 설정 전의 화면입니다. 실제 Firebase 연결 검증은 설정 후 진행해야 합니다.
+아래는 실제 Firebase 연결과 CRUD·실시간 동기화 검증을 마친 화면입니다.
 
 ![라이트 모드](./docs/screenshots/light.jpg)
 

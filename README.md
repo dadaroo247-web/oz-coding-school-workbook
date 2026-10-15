@@ -52,7 +52,7 @@ npm run dev
 
 ## TodoFlow 최종 과제
 
-[TodoFlow 구현본](./todo-flow-final)에 필수 기능과 선택 과제(삭제, 다크모드, `useSettings`)를 구현했습니다. 설치·린트·빌드 및 자동 테스트 26개를 검증했습니다. 실제 무료 Spark 프로젝트·웹 앱·서울 Firestore 생성과 로컬 설정 연결을 완료했습니다. [데이터 접근 규칙 게시 및 실제 CRUD 검증](./todo-flow-final/FIREBASE_STATUS.md)이 남아 있습니다.
+[TodoFlow 구현본](./todo-flow-final)에 필수 과제 1~7과 선택 과제(삭제, 다크모드, `useSettings`)를 모두 구현했습니다. 설치·린트·빌드 및 자동 테스트 26개를 검증했고, 실제 무료 Spark Firebase 프로젝트를 연결해 [추가·완료 변경·삭제·두 창 간 실시간 동기화](./todo-flow-final/FIREBASE_STATUS.md)까지 확인했습니다.
 
 ```bash
 cd todo-flow-final

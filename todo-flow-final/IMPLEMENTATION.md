@@ -1,118 +1,86 @@
-# TodoFlow 구현 및 검증 결과
-
-> 아래는 최초 구현 시점의 기록입니다. 이후 Firebase 프로젝트·웹 앱·Firestore 생성과 로컬 설정 연결을 진행했습니다. 최신 상태와 남은 검증은 [Firebase 연결 현황](./FIREBASE_STATUS.md)을 기준으로 확인하세요.
+# TodoFlow 최종 구현 및 검증 결과
 
 검증일: 2026-10-15 (한국 시간)
 
-## 전달 상태
+## 완료한 과제
 
-- 필수 과제 **1, 3, 4, 5, 6, 7**과 선택 과제 **삭제·다크모드·useSettings**를 구현했습니다.
-- 과제 **2**는 환경변수 기반 Firebase 초기화, 설정 누락·초기화 실패 안내, 설정 문서까지 구현했습니다. **사용자가 실제 Firebase 설정값을 입력하고 해당 프로젝트의 통신을 확인하는 단계는 남아 있습니다.**
-- `.env.local.example`은 원본의 빈 템플릿 그대로 유지했습니다. `.env.local`은 만들지 않았으며, 실제 Firebase 설정값을 소스에 추가하지 않았습니다.
-- 이 구현본은 사용자의 `dadaroo247-web/oz-coding-school-workbook` 저장소 `todo-flow-final` 폴더에 업로드하는 버전입니다. 웹 배포와 Firebase 프로젝트 생성은 아직 진행하지 않았습니다.
+필수 과제 **1~7**과 선택 과제 **삭제·다크모드·useSettings**를 모두 구현하고 검증했습니다. 실제 Firebase 프로젝트를 생성하고 웹 앱 설정과 Firestore 접근 규칙까지 연결했습니다.
 
-## 원본과 작업 경로
-
-- 원본 저장소: https://github.com/ozedu5/frontend-final
-- 기준 커밋: `20cb561fe30cad8331e679455ffc7658c42abb53`
-- 워크북 내 구현 경로: `todo-flow-final/`
-- 확인 결과 `package.json`, `src`, `.env.local.example`이 저장소 최상위에 있습니다. 과제 설명의 `cd todo-flow-final` 대신 실제 클론 폴더인 `frontend-final`을 사용했습니다.
+| 구분 | 구현 내용 | 주요 파일 |
+| --- | --- | --- |
+| 과제 1 | Todo 인터페이스, FilterType·ThemeType 리터럴 타입 | `src/types/todo.ts` |
+| 과제 2 | 실제 Spark 프로젝트, 웹 앱·서울 Firestore 생성, 환경변수 연결 및 초기화 | `src/lib/firebase.ts`, `.env.local.example` |
+| 과제 3 | toggleTheme, setFilter reducer | `src/store/todoSlice.ts` |
+| 과제 4 | onSnapshot 실시간 읽기, createdAt 내림차순 정렬, 구독 해제 | `src/components/todo/TodoList.tsx` |
+| 과제 5 | addDoc, serverTimestamp, 공백 입력 차단 및 중복 저장 방지 | `src/components/todo/TodoInput.tsx` |
+| 과제 6 | updateDoc으로 완료·미완료 반전 | `src/components/todo/TodoList.tsx` |
+| 과제 7 | TodoList 재사용 및 고정 완료 필터로 /completed 구현 | `src/app/completed/page.tsx` |
+| 선택: 삭제 | deleteDoc, 완료 토글과 별개로 처리 | `src/components/todo/TodoList.tsx` |
+| 선택: 다크모드 | Redux 테마에 따라 배경·입력·목록·안내 색상 적용 | `src/components/layout/ThemeWrapper.tsx`, `src/app/globals.css` |
+| 선택: 커스텀 훅 | 타입이 지정된 Redux 상태 접근과 안정적인 변경 함수 | `src/hooks/useSettings.ts` |
 
 ## 검증 결과
 
-| 검사 | 결과 | 범위 |
+| 검사 | 결과 | 검증 범위 |
 | --- | --- | --- |
-| `npm install` | 성공 | 원본 의존성 설치 및 테스트 개발 의존성 추가 |
-| `npm run lint` | 성공 | 오류 0, 경고 0 |
-| `npm test` | 성공 | 3개 파일, 26개 테스트 |
-| `npx tsc --noEmit` | 성공 | 소스 및 테스트 TypeScript 검사 |
-| `npm run build` | 성공 | Next.js 16.2.9, TypeScript, 정적 페이지 생성까지 완료 |
-| `git diff --check` | 성공 | 변경 파일의 공백 오류 없음 |
-| 프로덕션 브라우저 확인 | 성공 | 아래 목록의 UI 동작 확인 |
-| 실제 Firebase 프로젝트 통신 | 미실시 | 실제 설정값 미제공 |
+| npm install | 성공 | 원본 의존성 및 테스트 개발 의존성 설치 |
+| npm run lint | 성공 | 오류 0, 경고 0 |
+| npm test | 성공 | 3개 파일, 26개 테스트 |
+| npx tsc --noEmit | 성공 | 소스와 테스트 타입 검사 |
+| npm run build | 성공 | 실제 .env.local 적용, Next.js TypeScript 검사 및 정적 페이지 생성 |
+| git diff --check | 성공 | 변경 파일 공백 검사 |
+| 실제 Firebase CRUD | 성공 | 추가·완료/미완료 변경·임시 항목 삭제·새로고침 유지 |
+| 두 창 간 실시간 동기화 | 성공 | 추가·상태 변경·삭제가 다른 창에 자동 반영 |
+| 실제 데이터 필터·라우팅 | 성공 | 전체·진행 중·완료, 완료 페이지 직접 새로고침 |
+| 테마·필터 설정 유지 | 성공 | 실제 브라우저 새로고침 후 복원 |
 
-검증 환경은 Node.js **24.21.0**, npm **11.19.0**입니다. 설치된 의존성의 엔진 범위를 반영해 `package.json`에 `^20.19.0 || ^22.13.0 || >=24.0.0`을 명시했습니다.
+검증 환경: Node.js **24.21.0**, npm **11.19.0**, Next.js **16.2.9**. 지원 Node 범위는 `^20.19.0 || ^22.13.0 || >=24.0.0`입니다.
 
-첫 빌드는 제한된 실행환경에서 빌드 도구의 내부 로컬 포트 사용이 막혀 실패했습니다. 허용된 실행환경에서 **동일한 `npm run build`를 다시 실행해 성공**했으며, 최종 소스와 테스트를 포함한 상태에서도 재검증했습니다. 린트·타입 검사를 끄거나 빌드 오류를 무시하는 설정은 추가하지 않았습니다.
+빌드는 `/`, `/completed`, `/_not-found`를 정상 생성했습니다. 제한된 실행환경의 빌드 도구 로컬 포트 제약은 허용된 실행환경에서 같은 명령을 실행해 해결했습니다. 린트나 타입 검사를 끄지 않았습니다.
 
-설치 과정에서 npm의 의존성 설치 스크립트 안내가 있었지만, 설치·린트·테스트·빌드는 정상 완료됐습니다.
+자동 테스트는 Firebase SDK를 모의하며 설정 누락·초기화 실패, 구독과 해제, 필터, 추가·토글·삭제, 권한 오류, 입력 보존, 중복 요청 방지, Redux·localStorage 복원을 검증합니다. 실제 서버 검증은 위 표와 [Firebase 연결 현황](./FIREBASE_STATUS.md)에 별도로 기록했습니다.
 
-최종 빌드 경로:
+## Firebase 연결
 
-```text
-/             정적 생성 성공
-/completed    정적 생성 성공
-/_not-found   정적 생성 성공
-```
+- 프로젝트: TodoFlow (`todoflow-27381`), 무료 Spark
+- 웹 앱: TodoFlow Web
+- Firestore: Standard, `(default)`, `asia-northeast3`(서울)
+- 실제 설정값은 Git에서 제외된 로컬 `.env.local`에만 저장했습니다.
+- `.env.local.example`은 원본의 빈 템플릿으로 유지했습니다.
+- 사용자가 승인한 `firestore.rules`를 게시했고, todos 외 경로는 차단합니다.
+- 공동 목록 접근 만료: **2026-11-14 09:00 (한국 시간)**. Spark 요금제의 종료일이 아닙니다.
 
-### 자동 테스트 범위
+공개 GitHub 저장소를 새로 복제하면 해당 환경의 `.env.local`을 별도로 채워야 합니다. [README](./README.md)에 설정 절차가 있습니다.
 
-Firestore 테스트는 SDK 함수를 모의해 동작을 검증합니다. 실제 서버 저장 성공이나 보안 규칙 검증을 의미하지 않습니다.
+## 원본과 저장 위치
 
-- Firebase 설정 누락·초기화 실패 처리, 기본 앱 재사용
-- `onSnapshot`, `createdAt` 내림차순 쿼리, 스냅샷 반영, 언마운트 구독 해제
-- 전체·진행 중·완료 필터, 완료 페이지의 고정 필터 우선 적용
-- 빈 입력 차단, 입력 공백 제거, 서버 타임스탬프 저장, 저장 성공 후 입력 초기화
-- 중복 추가·변경 차단, 저장 실패 시 입력 보존, 오류 후 재시도 가능 상태
-- 완료/미완료 반전, 삭제가 완료 토글을 발생시키지 않음
-- 구독·추가·변경·삭제 권한 오류 안내, 로딩·설정 누락 UI
-- 실제 Redux/useSettings 연결, 테마·필터 localStorage 저장 및 새 store에서 복원
+- 원본 스켈레톤: https://github.com/ozedu5/frontend-final
+- 기준 커밋: `20cb561fe30cad8331e679455ffc7658c42abb53`
+- 제출 저장소: https://github.com/dadaroo247-web/oz-coding-school-workbook/tree/main/todo-flow-final
+- 워크북 폴더: `todo-flow-final/`
 
-### 브라우저 확인 범위
-
-`npm run start -- --hostname 127.0.0.1 --port 3000`으로 프로덕션 앱을 열어 다음을 확인했습니다.
-
-- `/` 화면 정상 표시, Firebase 미설정 안내, 입력 및 추가 버튼 비활성화
-- 다크/라이트 전환과 필터 선택에 따른 제목·선택 표시 변경
-- 새로고침 후 다크 테마 및 진행 중 필터 유지
-- `/completed` 진입과 직접 새로고침, 완료 필터 유지
-- 완료 페이지에서 진행 중 필터 선택 시 `/`로 이동
-- 검사 중 브라우저 콘솔의 warning/error 기록 없음
-
-[라이트 모드 실행 화면](./docs/screenshots/light.jpg) · [완료 페이지 다크 모드 실행 화면](./docs/screenshots/completed-dark.jpg)
-
-이 화면들은 실제 Firebase가 연결되지 않은 상태입니다. 실제 항목의 저장·새로고침 후 유지·두 창 간 실시간 동기화는 Firebase 연결 후 README의 수동 확인 목록에 따라 확인해야 합니다.
+원본은 최상위에 package.json과 src가 있는 구조여서 `frontend-final`에 클론했습니다. 워크북에는 별도 `todo-flow-final` 폴더로 추가했습니다.
 
 ## 수정·추가 파일
 
-| 파일 | 변경 내용 |
-| --- | --- |
-| `src/types/todo.ts` | Todo 구조 유지, FilterType/ThemeType 리터럴 타입 완성 |
-| `src/store/todoSlice.ts` | toggleTheme, setFilter reducer 구현 |
-| `src/store/storage.ts` | SSR 대체 스토리지의 불필요한 인수 제거, 린트 경고 해결 |
-| `src/hooks/useSettings.ts` | 타입이 지정된 Redux 접근 및 안정적인 dispatch 콜백 |
-| `src/lib/firebase.ts` | 실제 환경변수만 사용, 누락·초기화 실패 처리, HMR 기본 앱 재사용 |
-| `src/lib/firestoreError.ts` (추가) | 권한·네트워크·삭제된 문서 오류의 사용자 안내 |
-| `src/components/todo/TodoInput.tsx` | addDoc, serverTimestamp, 입력 검증, 중복 저장 방지, 오류 안내 |
-| `src/components/todo/TodoList.tsx` | onSnapshot 구독, 필터, updateDoc, deleteDoc, 로딩/빈 목록/오류 처리 |
-| `src/components/layout/Navbar.tsx` | useSettings 사용, 페이지 이동·필터 연결, 접근성 이름·선택 상태 |
-| `src/components/layout/ThemeWrapper.tsx` | Redux 테마를 화면 전체에 적용 |
-| `src/app/globals.css` | 라이트/다크 색상, 반응형 배치, 버튼·입력·목록·상태 화면 스타일 |
-| `src/app/layout.tsx` | 빌드 시 외부 Google Fonts 다운로드 의존성 제거, 시스템 글꼴 사용 |
-| `src/app/page.tsx` | useSettings 필터 제목 및 메인 화면 |
-| `src/app/completed/page.tsx` | 완료 필터 초기화 및 TodoList 고정 필터로 완료 목록 보장 |
-| `package.json` | 테스트 실행 스크립트·개발 의존성·Node 지원 범위 |
-| `package-lock.json` | 설치 결과 및 테스트 도구 버전 고정 |
-| `vitest.config.mts` (추가) | 테스트 환경과 경로 별칭 |
-| `tests/firebase.test.ts` (추가) | Firebase 설정 분기 테스트 4개 |
-| `tests/settings.test.tsx` (추가) | Redux·훅·테마·필터·저장 복원 테스트 4개 |
-| `tests/todos.test.tsx` (추가) | 할 일 CRUD·실시간 구독·오류·필터 테스트 18개 |
-| `README.md` | 실행·Firebase 설정·과제 매핑·수동 검증 안내 |
-| `IMPLEMENTATION.md` (추가) | 본 결과 보고서 |
+- 타입·상태: `src/types/todo.ts`, `src/store/todoSlice.ts`, `src/store/storage.ts`, `src/hooks/useSettings.ts`
+- Firebase·오류·규칙: `src/lib/firebase.ts`, `src/lib/firestoreError.ts`, `firestore.rules`
+- 할 일 입력·목록: `src/components/todo/TodoInput.tsx`, `src/components/todo/TodoList.tsx`
+- 전체 테마·탐색: `src/components/layout/ThemeWrapper.tsx`, `src/components/layout/Navbar.tsx`
+- 페이지·스타일: `src/app/layout.tsx`, `src/app/page.tsx`, `src/app/completed/page.tsx`, `src/app/globals.css`
+- 테스트: `tests/firebase.test.ts`, `tests/settings.test.tsx`, `tests/todos.test.tsx`, `vitest.config.mts`
+- 의존성·실행 명령: `package.json`, `package-lock.json`
+- 문서·화면: `README.md`, `IMPLEMENTATION.md`, `FIREBASE_STATUS.md`, `docs/screenshots/`
+- 워크북 첫 화면: 최상위 `README.md`에 과제 링크와 실행 방법 추가
 
-`.env.local.example`, `.gitignore`, 원본 과제 `GUIDE.md`는 유지했습니다.
+`.gitignore`, `.env.local.example`, 원본 과제 `GUIDE.md`는 유지했습니다. Google Fonts의 빌드 시 외부 다운로드를 제거하고 시스템 글꼴을 사용했습니다.
 
-## 실행 및 남은 설정
+## 실제 실행 화면
 
-워크북의 `todo-flow-final` 폴더에서 다음을 실행합니다.
+완료·진행 중 예시 2개를 실제 Firestore에 남겼습니다. 삭제 기능 검증용 임시 항목은 검증 후 제거했습니다.
 
-```bash
-npm install
-cp .env.local.example .env.local
-# .env.local의 6개 NEXT_PUBLIC_FIREBASE_* 항목에 실제 웹 앱 설정값을 입력합니다.
-npm run dev
-```
+![실제 Firebase 목록](./docs/screenshots/light.jpg)
 
-실제 설정값을 입력하기 전에도 `npm run dev`로 설정 안내·테마·필터를 확인할 수 있습니다. Firebase의 기본 `(default)` Firestore를 생성하고 읽기·쓰기 규칙을 확인해야 실제 할 일을 사용할 수 있습니다. 세부 절차는 [README.md](./README.md)에 있습니다.
+![실제 Firebase 완료 페이지 다크 모드](./docs/screenshots/completed-dark.jpg)
 
-업로드 대상에는 소스, 설정 예제, lockfile, 테스트, 문서와 실행 화면을 포함했습니다. `node_modules`, `.next`, 캐시와 실제 환경설정 파일은 제외했습니다.
+압축본과 GitHub에는 소스·설정 예제·lockfile·테스트·규칙·문서·실행 화면을 포함했습니다. `.env.local`, `.git`, node_modules, .next 및 캐시는 제외했습니다.

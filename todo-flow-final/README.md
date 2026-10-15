@@ -2,7 +2,7 @@
 
 Next.js App Router, TypeScript, Firebase Firestore, Redux Toolkit으로 구현한 프론트엔드 최종 과제입니다. 할 일은 Firestore에 저장하고, 화면의 테마와 목록 필터는 Redux 및 redux-persist로 관리합니다.
 
-필수 과제 1·3~7과 선택 과제인 삭제, 다크모드, `useSettings`를 구현했습니다. **과제 2의 초기화 코드와 설정 안내는 준비되어 있지만, 실제 Firebase 설정값이 제공되지 않아 실제 프로젝트 연결과 실시간 CRUD 검증은 남아 있습니다.** `.env.local.example`은 빈 설정 템플릿 그대로 유지했습니다.
+필수 기능과 선택 과제인 삭제, 다크모드, `useSettings`를 구현했습니다. **실제 무료 Spark 프로젝트·웹 앱·서울 Firestore 생성과 로컬 설정 연결을 완료했습니다. 현재 접근 규칙 게시 확인을 기다리고 있으며, 실제 CRUD·실시간 동기화 검증은 그다음 단계입니다.** `.env.local.example`은 빈 템플릿으로 유지했습니다. [Firebase 연결 현황](./FIREBASE_STATUS.md)을 참고하세요.
 
 ## 실행하기
 

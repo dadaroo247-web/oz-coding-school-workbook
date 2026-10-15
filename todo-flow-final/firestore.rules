@@ -1,0 +1,27 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // 과제용 공동 목록: 2026-11-14 09:00 (Asia/Seoul)까지 제한적으로 공개.
+    // 이 날짜는 접근 규칙 만료일이며 Spark 요금제의 종료일이 아닙니다.
+    function assignmentOpen() {
+      return request.time < timestamp.date(2026, 11, 14);
+    }
+    function validTodo() {
+      return request.resource.data.keys().hasAll(['text', 'isDone', 'createdAt'])
+        && request.resource.data.keys().hasOnly(['text', 'isDone', 'createdAt'])
+        && request.resource.data.text is string
+        && request.resource.data.text.size() > 0
+        && request.resource.data.text.size() <= 500
+        && request.resource.data.isDone is bool
+        && request.resource.data.createdAt is timestamp;
+    }
+    match /todos/{todoId} {
+      allow read, delete: if assignmentOpen();
+      allow create: if assignmentOpen() && validTodo()
+        && request.resource.data.isDone == false
+        && request.resource.data.createdAt == request.time;
+      allow update: if assignmentOpen() && validTodo()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isDone']);
+    }
+  }
+}

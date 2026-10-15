@@ -7,6 +7,7 @@ OZ 코딩스쿨에서 배운 내용을 복습하고 일별 과제를 정리하�
 | 날짜 | 과제 | 학습 내용 |
 | --- | --- | --- |
 | Day 40 | [Zustand 카운터](./day40-zustand) | Store 생성, 상태 변경, selector 사용 |
+| 프론트엔드 최종 과제 | [TodoFlow 실시간 할 일 관리](./todo-flow-final) | TypeScript, Firestore CRUD·실시간 구독, Redux Toolkit, Next.js 라우팅, 다크모드 |
 
 ## 기존 공개 저장소 과제
 
@@ -48,3 +49,17 @@ npm run dev
 - 브라우저 콘솔 오류 없음
 
 새 과제는 `day41-과제이름`처럼 별도 폴더에 추가합니다.
+
+## TodoFlow 최종 과제
+
+[TodoFlow 구현본](./todo-flow-final)에 필수 기능과 선택 과제(삭제, 다크모드, `useSettings`)를 구현했습니다. 설치·린트·빌드 및 자동 테스트 26개를 검증했습니다. 실제 Firebase 설정값 입력과 서비스 통신 검증은 남아 있습니다.
+
+```bash
+cd todo-flow-final
+npm install
+cp .env.local.example .env.local
+# 실제 Firebase 웹 앱 설정값 6개를 .env.local에 입력한 뒤 실행합니다.
+npm run dev
+```
+
+설정 방법은 [TodoFlow README](./todo-flow-final/README.md), 전체 수정 파일과 검증 범위는 [구현 보고서](./todo-flow-final/IMPLEMENTATION.md)를 참고하세요.

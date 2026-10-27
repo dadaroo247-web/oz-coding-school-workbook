@@ -8,6 +8,7 @@ OZ 코딩스쿨에서 배운 내용을 복습하고 일별 과제를 정리하�
 | --- | --- | --- |
 | Day 40 | [Zustand 카운터](./day40-zustand) | Store 생성, 상태 변경, selector 사용 |
 | 프론트엔드 최종 과제 | [TodoFlow 실시간 할 일 관리](./todo-flow-final) | TypeScript, Firestore CRUD·실시간 구독, Redux Toolkit, Next.js 라우팅, 다크모드 |
+| 데이터베이스 최종 과제 | [MovieKeep 영화 찜 DB 종합 실습](./movie-keep-final) | Firebase·Zustand Store 복원, Firestore 메모 저장, SQLite 제약조건·CRUD·JOIN·집계, Express JSON API |
 
 ## 기존 공개 저장소 과제
 
@@ -63,3 +64,14 @@ npm run dev
 ```
 
 설정 방법은 [TodoFlow README](./todo-flow-final/README.md), 전체 수정 파일과 검증 범위는 [구현 보고서](./todo-flow-final/IMPLEMENTATION.md)를 참고하세요.
+
+## MovieKeep 데이터베이스 최종 과제
+
+[MovieKeep 구현본](./movie-keep-final)에 필수 과제 1~8(TODO 01~18)을 모두 구현했습니다. 세 실습(Firebase/Zustand, SQLite, Express)은 과제 요구대로 서로 연결하지 않았습니다.
+
+- **Firebase/Zustand**: 로그인 사용자·찜 목록 Store 반영, `updateDoc`으로 메모 저장·수정, 새로고침 복원, 빈 메모 저장 시 찜 유지 확인
+- **SQLite**: 복합 UNIQUE·외래 키 정의, 조건 조회·정렬·LIMIT, CRUD, 제약조건 위반(A·C·D) 검증, JOIN·COUNT·GROUP BY 집계
+- **Express**: `/api/favorites`(배열)·`/api/favorite-count`(`favorites.length`) 응답, 테스트 항목 추가 시 9건으로 바뀌는 것 확인 후 8건으로 복원
+- **선택 과제**: Express 데이터 변경 테스트 기록 완료, 빈 메모 화면 필터는 미구현
+
+실행 결과 이미지 4장과 [SQL 실행 기록](./movie-keep-final/results/SQL결과_작성양식.md), [검증 요약](./movie-keep-final/results/검증요약.md)은 `movie-keep-final/results`에 있습니다. 실행 방법과 핵심 개념 설명은 [MovieKeep README](./movie-keep-final/README.md)를 참고하세요.

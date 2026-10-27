@@ -1,0 +1,23 @@
+{
+  "recordedAt": "2026-10-27T17:13:00+09:00",
+  "method": "Actual browser screenshots. Required API images show a validation page that fetches the real endpoints and displays request URL/status/JSON; direct raw response screenshots are also included. Firebase images show actual app interactions. JPEG-to-PNG encoding only; no compositing.",
+  "apiEndpoints": [
+    "http://localhost:4000/api/favorites",
+    "http://localhost:4000/api/favorite-count"
+  ],
+  "apiValidationPage": "http://localhost:4000/__evidence",
+  "firebaseApp": "http://localhost:3100/movies",
+  "apiListCount": 8,
+  "apiCountAfterAddingId30": 9,
+  "finalApiSourceSha256": "cb9b20cdb8f613eb548a59f6bf38cd9cc692620e4f86ace61f0c5664c4ce7fd9",
+  "captureScriptSha256": "259deebe79e88322fb01ee043eec353c4692762edc00fd8ea5af9a623adf82a0",
+  "files": {
+    "result-api-list.png": "78bee82f9cea36dcabe7183391c195266fb3d1cf923ae2d8e3538cfa46fd2efe",
+    "result-api-count.png": "27afc5a021a29fd2c4d7976c300d66de40f862a714068a0bcde1dfccf5d8d87a",
+    "result-api-list-raw.png": "2b509728082a85e00f4944137f9f87b9b98ebacbde0d2d18240ecea354b58419",
+    "result-api-count-raw.png": "c26f332658880ade304c3be17c3bbb2ed3c49a096a67eaeab01d34fb6a98e81c",
+    "result-memo.png": "46a71760b39d512b25c80d097afcab07c930dac0868db4da21f9c67b1761f858",
+    "result-empty-memo.png": "6bad33028e96d5585f2df20db8132f12a355d814bf5cb815c831bd89cc9e64c4",
+    "result-save-error.png": "ae6977b2a23ce645a59b08d58a28887120dd251532cc283e5a24761fe566d8f3"
+  }
+}
